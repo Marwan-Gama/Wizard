@@ -55,7 +55,9 @@ class Wizard:
                 return birth_date
             else:
                 print("Invalid date format. Please enter a valid date.")
+
     def run_phase_1(self):
+        print("Phase 1:\n----------------")
         full_name=self.get_user_name()
         birth_date=self.get_birth_date()
         email=self.get_email()
