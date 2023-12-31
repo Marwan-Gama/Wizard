@@ -20,27 +20,27 @@ class Phase:
         while True:
             print(string)
             if func:
-                input=input()
+                user_input=input()
                 if func(input):
-                    return input
+                    return user_input
                 else:
                     print("Invalid input. Please enter it again.")
             else:
-                input=input()
-                return input
-
-            
+                user_input=input()
+                return user_input
+           
+         
     def run_phase(self,wizard):
         if self.num_phase==1:
-            wizard.details["Name"]=self.input_validation('Enter your full name (minimum 2 characters each):\n',lambda x:len(x.split()) == 2 and (len(name) >= 2 for name in x.split()))
-            wizard.details["Email"]=self.input_validation('Enter your email address:\n',lambda x:len(x)>0 and re.match(r"[^@]+@[^@]+\.[^@]+", x))
-            wizard.details["birth_date"]=self.input_validation('Enter your birth date in format (dd/MM/yy):\n',lambda x:len(x)>0 and len(x.split('/'))==3)
+            wizard.details["Name"]=self.input_validation('Enter your full name (minimum 2 characters each):\n',self.validation_functions["Name"])
+            wizard.details["Email"]=self.input_validation('Enter your email address:\n',self.validation_functions["Email"])
+            wizard.details["Birth Date"]=self.input_validation('Enter your birth date in format (dd/MM/yy):\n',self.validation_functions["Birth Date"])
         elif self.num_phase==2:
-            wizard.details["City"]=self.input_validation('Enter your city\n',lambda x:len(x)>0)
-            wizard.details["Street"]=self.input_validation('Enter your street\n',lambda x:len(x)>0)
-            wizard.details["Number"]=self.input_validation('Enter your number\n',lambda x: x !=0 and x>0)
+            wizard.details["City"]=self.input_validation('Enter your city\n',self.validation_functions["City"])
+            wizard.details["Street"]=self.input_validation('Enter your street\n',self.validation_functions["Street"])
+            wizard.details["Number"]=self.input_validation('Enter your number\n',self.validation_functions["Number"])
         else:
-            wizard.details["Social Media"]=self.input_validation('Enter your social media (facebook, twitter, Instagram or linkedin)\n',lambda x:re.compile(r'^(https?://)?(www\.)?(facebook|twitter|instagram|linkedin)\.com/.*$'))
+            wizard.details["Social Media"]=self.input_validation('Enter your social media (facebook, twitter, Instagram or linkedin)\n',self.validation_functions["Social Media"])
             wizard.details["Hobbies"]=self.input_validation('Enter your hobbies (Chess, Movies, Sport, Cars, Dolls)\n')
 
     def update(self,wizard):
