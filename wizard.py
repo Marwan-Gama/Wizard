@@ -107,6 +107,3 @@ class Wizard:
 
 wizard = Wizard()
 wizard.start_wizard()
-
-
-#test
