@@ -52,9 +52,9 @@ class Wizard:
                     num_phase += 1
                     self.create_phase(num_phase)
                     return 'done'
-                #if num_phase == 3:
-                #    self.create_phase(num_phase + 1)
-                #    return 'done'
+                if num_phase == 3:
+                    self.create_phase(num_phase + 1)
+                    return 'done'
             elif move == "2":
                 if num_phase == 1:
                     print('You in Phase 1, You cant prev')
@@ -70,10 +70,10 @@ class Wizard:
                     print('You in Phase 2')
                     display.show_phase(num_phase , self.details)
                     self.check_if_update(self.completed_phases[num_phase-1])
-                #elif num_phase == 4:
-                #   print('You in Phase 3')
-                #   display.show_phase(num_phase -1 , self.details)
-                #   self.check_if_update(self.completed_phases[num_phase-2])
+                elif num_phase == 4:
+                   print('You in Phase 3')
+                   display.show_phase(num_phase -1 , self.details)
+                   self.check_if_update(self.completed_phases[num_phase-2])
             else:
                 print("Invalid choice. Please enter '1' to continue Next or '2' to Prev.")
 
