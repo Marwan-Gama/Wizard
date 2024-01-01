@@ -12,7 +12,11 @@ class Phase:
         "Street": lambda x: len(x) > 0,
         "Number": lambda x: x != 0 and x > 0,
         "Social Media": lambda x: re.compile(r'^(https?://)?(www\.)?(facebook|twitter|instagram|linkedin)\.com/.*$'),
-        "Hobbies": lambda x: True  
+        "Hobbies": lambda x: True,
+        "Happy": lambda x: x=='Yes' or x=='No',  
+        "Skydiving": lambda x: x=='Yes' or x=='Maybe' or x=='No', 
+        "One Dolar": lambda x: x=='Yes' or x=='No'  
+
         }
     
 
@@ -39,9 +43,13 @@ class Phase:
             wizard.details["City"]=self.input_validation('Enter your city\n',self.validation_functions["City"])
             wizard.details["Street"]=self.input_validation('Enter your street\n',self.validation_functions["Street"])
             wizard.details["Number"]=self.input_validation('Enter your number\n',self.validation_functions["Number"])
-        else:
+        elif self.num_phase==3:
             wizard.details["Social Media"]=self.input_validation('Enter your social media (facebook, twitter, Instagram or linkedin)\n',self.validation_functions["Social Media"])
             wizard.details["Hobbies"]=self.input_validation('Enter your hobbies (Chess, Movies, Sport, Cars, Dolls)\n')
+        else:
+            wizard.details["Happy"]=self.input_validation('Are you a happy person? Yes/No\n',self.validation_functions["Happy"])
+            wizard.details["Skydiving"]=self.input_validation(' Will you do skydiving? Yes/Maybe/No\n',self.validation_functions["Skydiving"])
+            wizard.details["One Dolar"]=self.input_validation('Do you have $1 in you pocket now? Yes/No\n',self.validation_functions["One Dolar"])
 
     def update(self,wizard):
         '''

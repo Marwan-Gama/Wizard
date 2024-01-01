@@ -10,7 +10,11 @@ class Wizard:
             "Street": None,
             "Number": None,
             "Social Media": None,
-            "Hobbies": None
+            "Hobbies": None,
+            "Happy": None,  
+            "Skydiving": None, 
+            "One Dolar": None
+
         }
         self.completed_phases = []
 
