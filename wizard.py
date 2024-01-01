@@ -6,7 +6,7 @@ class Wizard:
         self.details = {
             "Name": None,
             "Email": None,
-            "birth_date": None,
+            "Birth Date": None,
             "City": None,
             "Street": None,
             "Number": None,
@@ -28,8 +28,8 @@ class Wizard:
             display.show_phase(phase.num_phase, self.details)
         elif if_update.upper() == 'N':
             print("You chose not to update anything.")
-        else:
-            print("Invalid input. Please enter 'Y' for Yes or 'N' for No.")
+        # else:
+            # print("Invalid input. Please enter 'Y' for Yes or 'N' for No.")
 
 
     def create_phase(self,num_phase):

@@ -4,7 +4,7 @@ from wizard import Wizard
 from phase import Phase
 
 def main():
-    SplashScreen.mainloop()
+    SplashScreen
     wizard = Wizard()
     wizard.start_wizard()
 

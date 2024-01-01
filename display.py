@@ -12,7 +12,7 @@ def display_summary(details):
         [f"{Fore.YELLOW}Email{Style.RESET_ALL} - {details['Email']}",
          f"{Fore.YELLOW}Street{Style.RESET_ALL} - {details['Street']}",
          f"{Fore.YELLOW}Hobbies{Style.RESET_ALL} - {', '.join(details['Hobbies']) if details['Hobbies'] else '-'}"],
-        [f"{Fore.YELLOW}Birth Date{Style.RESET_ALL} - {details['birth_date']}",
+        [f"{Fore.YELLOW}Birth Date{Style.RESET_ALL} - {details['Birth Date']}",
          f"{Fore.YELLOW}Number{Style.RESET_ALL} - {details['Number'] if details['Number'] else '-'}",
          ""]
     ]
