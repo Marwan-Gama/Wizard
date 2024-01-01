@@ -1,7 +1,6 @@
 #
 import splash
 from wizard import Wizard
-from splash import splashscreen
 from phase import Phase
 
 def main():
