@@ -85,12 +85,16 @@ class Wizard:
                 if_done = self.prev_or_next(1)
                 if if_done == 'done':
                     display.display_summary(self.details)
+                    if display.get_rest()==True:
+                        self.phases = []
+
+
             elif choice == "2":
                 phase_number = int(input("Enter phase number: "))
                 phase_numbers = [phase.num_phase for phase in self.phases]
                 if phase_number in phase_numbers:
                     self.show_phase(phase_number ,  self.details)
-                elif phase_number == len(phase) + 1:
+                elif phase_number == len(self.phases) + 1:
                     self.create_phase(phase_number)
                 else:
                     print("You can't access this phase yet. Please complete previous phases.")
