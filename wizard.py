@@ -1,5 +1,6 @@
 # Wizard Application
 import re
+# from display import show_phase
 class Wizard:
     def __init__(self):
         self.details = {
@@ -12,7 +13,7 @@ class Wizard:
             "Social Media": None,
             "Hobbies": None
         }
-        self.completed_phases = []
+        self.phases = []
 
     def start_wizard(self):
         print("Welcome to the Wizard!")
@@ -96,6 +97,9 @@ class Wizard:
             pass # self.run_phase_2()
         elif phase == 3:
             pass # self.run_phase_3()
+
+
+
 
 
 
