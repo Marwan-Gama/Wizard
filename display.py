@@ -45,5 +45,3 @@ def rest_data(details):
     for k,v in details.items():
         details[k]=None
     rest=True
-
-
