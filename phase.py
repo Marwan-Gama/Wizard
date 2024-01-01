@@ -49,20 +49,22 @@ class Phase:
 
         Args:wizard (Wizard): The wizard instance.
 
-        Returns:None
+        Returns:the str message from update_phase_field
         '''
         choice = input("What field do you want to change?")
         choice=choice.capitalize()
 
         # Check the current phase and update the corresponding fields
         if self.num_phase==1:
-          self.update_phase_field(wizard, choice, ["Name","Email","birth_date"])
+            return self.update_phase_field(wizard, choice, ["Name","Email","Birth Date"])
    
         if self.num_phase==2:
-            self.update_phase_field(wizard, choice, ["City","Street","Number"])
+           return self.update_phase_field(wizard, choice, ["City","Street","Number"])
 
         if self.num_phase==3:
-            self.update_phase_field(wizard, choice, ["Social Media","Hobbies"])
+           return self.update_phase_field(wizard, choice, ["Social Media","Hobbies"])
+       
+
 
     def update_phase_field(self,wizard, choice,phase_attributes):
         '''Update a field in the wizard's details if it belongs to the specified phase.
@@ -71,13 +73,13 @@ class Phase:
             choice (str): The field the user wants to update.
             phase_attributes (list): List of valid field names for the current phase.
 
-        Returns:None
+        Returns: str : that tells if the choice updated or invalid field chosen
         '''
         if choice in phase_attributes:
             wizard.details[choice] = self.input_validation(f'Enter your {choice}:\n', self.validation_functions[choice])
-
+            return "Updated successfully"
         else:
-            print("Invalid field choice.")
+            return "Invalid field choice."
 
 
 
