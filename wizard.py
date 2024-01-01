@@ -17,7 +17,6 @@ class Wizard:
 
         }
         self.completed_phases = []
-
     def start_wizard(self):
         print("Welcome to the Wizard!")
         while True:
@@ -38,5 +37,6 @@ class Wizard:
 
 
 
-wizard = Wizard()
-wizard.start_wizard()
+# wizard = Wizard()
+# wizard.start_wizard()
+

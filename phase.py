@@ -1,4 +1,4 @@
-from wizard import wizard
+from wizard import Wizard
 import re
 class Phase:
     def __init__(self,number):
@@ -15,7 +15,7 @@ class Phase:
         "Hobbies": lambda x: True,
         "Happy": lambda x: x=='Yes' or x=='No',  
         "Skydiving": lambda x: x=='Yes' or x=='Maybe' or x=='No', 
-        "One Dolar": lambda x: x=='Yes' or x=='No'  
+        "One Dollar": lambda x: x=='Yes' or x=='No'  
 
         }
     
@@ -25,15 +25,15 @@ class Phase:
             print(string)
             if func:
                 user_input=input()
-                if func(input):
+                if func(user_input):
                     return user_input
                 else:
                     print("Invalid input. Please enter it again.")
             else:
                 user_input=input()
                 return user_input
-           
-         
+
+            
     def run_phase(self,wizard):
         if self.num_phase==1:
             wizard.details["Name"]=self.input_validation('Enter your full name (minimum 2 characters each):\n',self.validation_functions["Name"])
@@ -49,7 +49,7 @@ class Phase:
         else:
             wizard.details["Happy"]=self.input_validation('Are you a happy person? Yes/No\n',self.validation_functions["Happy"])
             wizard.details["Skydiving"]=self.input_validation(' Will you do skydiving? Yes/Maybe/No\n',self.validation_functions["Skydiving"])
-            wizard.details["One Dolar"]=self.input_validation('Do you have $1 in you pocket now? Yes/No\n',self.validation_functions["One Dolar"])
+            wizard.details["One Dollar"]=self.input_validation('Do you have $1 in you pocket now? Yes/No\n',self.validation_functions["One Dollar"])
 
     def update(self,wizard):
         '''
@@ -64,15 +64,20 @@ class Phase:
 
         # Check the current phase and update the corresponding fields
         if self.num_phase==1:
-          self.update_phase_field(self, wizard, choice, ["Name","Email","birth_date"])
+          self.update_phase_field(wizard, choice, ["Name","Email","Birth Date"])
    
         if self.num_phase==2:
-            self.update_phase_field(self, wizard, choice, ["City","Street","Number"])
+            self.update_phase_field(wizard, choice, ["City","Street","Number"])
 
         if self.num_phase==3:
-            self.update_phase_field(self, wizard, choice, ["Social Media","Hobbies"])
+            self.update_phase_field(wizard, choice, ["Social Media","Hobbies"])
 
-    def update_phase_field(self, wizard, choice,phaze_attributes):
+        if self.num_phase==4:
+            self.update_phase_field(wizard, choice, ["Happy","Skydiving","One Dollar"])
+       
+
+
+    def update_phase_field(self,wizard, choice,phase_attributes):
         '''Update a field in the wizard's details if it belongs to the specified phase.
 
         Args: wizard (Wizard): The wizard instance.
@@ -81,11 +86,14 @@ class Phase:
 
         Returns:None
         '''
-        if choice in phaze_attributes:
+        if choice in phase_attributes:
             wizard.details[choice] = self.input_validation(f'Enter your {choice}:\n', self.validation_functions[choice])
+            
         else:
             print("Invalid field choice.")
 
 
 
-    
+
+
+
