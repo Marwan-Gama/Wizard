@@ -1,5 +1,6 @@
 # Wizard Application
 import re
+# from display import show_phase
 class Wizard:
     def __init__(self):
         self.details = {
@@ -16,7 +17,9 @@ class Wizard:
             "One Dolar": None
 
         }
-        self.completed_phases = []
+        self.phases = []
+
+
     def start_wizard(self):
         print("Welcome to the Wizard!")
         while True:
@@ -36,7 +39,4 @@ class Wizard:
 
 
 
-
-# wizard = Wizard()
-# wizard.start_wizard()
 
