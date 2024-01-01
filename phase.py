@@ -1,4 +1,4 @@
-from wizard import wizard
+from wizard import Wizard
 import re
 class Phase:
     def __init__(self,number):
@@ -20,14 +20,14 @@ class Phase:
         while True:
             print(string)
             if func:
-                input=input()
-                if func(input):
-                    return input
+                user_input=input()
+                if func(user_input):
+                    return user_input
                 else:
                     print("Invalid input. Please enter it again.")
             else:
-                input=input()
-                return input
+                user_input=input()
+                return user_input
 
             
     def run_phase(self,wizard):
@@ -56,15 +56,15 @@ class Phase:
 
         # Check the current phase and update the corresponding fields
         if self.num_phase==1:
-          self.update_phase_field(self, wizard, choice, ["Name","Email","birth_date"])
+          self.update_phase_field(wizard, choice, ["Name","Email","birth_date"])
    
         if self.num_phase==2:
-            self.update_phase_field(self, wizard, choice, ["City","Street","Number"])
+            self.update_phase_field(wizard, choice, ["City","Street","Number"])
 
         if self.num_phase==3:
-            self.update_phase_field(self, wizard, choice, ["Social Media","Hobbies"])
+            self.update_phase_field(wizard, choice, ["Social Media","Hobbies"])
 
-    def update_phase_field(self, wizard, choice,phaze_attributes):
+    def update_phase_field(self,wizard, choice,phase_attributes):
         '''Update a field in the wizard's details if it belongs to the specified phase.
 
         Args: wizard (Wizard): The wizard instance.
@@ -73,11 +73,14 @@ class Phase:
 
         Returns:None
         '''
-        if choice in phaze_attributes:
+        if choice in phase_attributes:
             wizard.details[choice] = self.input_validation(f'Enter your {choice}:\n', self.validation_functions[choice])
+
         else:
             print("Invalid field choice.")
 
 
 
-    
+
+
+
