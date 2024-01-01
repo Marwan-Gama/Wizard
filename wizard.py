@@ -13,7 +13,6 @@ class Wizard:
             "Hobbies": None
         }
         self.completed_phases = []
-
     def start_wizard(self):
         print("Welcome to the Wizard!")
         while True:
@@ -105,5 +104,6 @@ class Wizard:
             print(f"{key}: {value}")
         print("\n")
 
-wizard = Wizard()
-wizard.start_wizard()
+# wizard = Wizard()
+# wizard.start_wizard()
+
