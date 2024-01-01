@@ -11,9 +11,14 @@ class Wizard:
             "Street": None,
             "Number": None,
             "Social Media": None,
-            "Hobbies": None
+            "Hobbies": None,
+            "Happy": None,  
+            "Skydiving": None, 
+            "One Dolar": None
+
         }
-        self.completed_phases = []
+        self.phases = []
+
 
     def check_if_update(self,phase):
         if_update = input("Do you want to update something? Type 'Y' for Yes or 'N' for No: ")
