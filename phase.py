@@ -12,7 +12,11 @@ class Phase:
         "Street": lambda x: len(x) > 0,
         "Number": lambda x: x != 0 and x > 0,
         "Social Media": lambda x: re.compile(r'^(https?://)?(www\.)?(facebook|twitter|instagram|linkedin)\.com/.*$'),
-        "Hobbies": lambda x: True  
+        "Hobbies": lambda x: True,
+        "Happy": lambda x: x=='Yes' or x=='No',  
+        "Skydiving": lambda x: x=='Yes' or x=='Maybe' or x=='No', 
+        "One Dollar": lambda x: x=='Yes' or x=='No'  
+
         }
     
 
@@ -32,16 +36,20 @@ class Phase:
             
     def run_phase(self,wizard):
         if self.num_phase==1:
-            wizard.details["Name"]=self.input_validation('Enter your full name (minimum 2 characters each):\n',lambda x:len(x.split()) == 2 and (len(name) >= 2 for name in x.split()))
-            wizard.details["Email"]=self.input_validation('Enter your email address:\n',lambda x:len(x)>0 and re.match(r"[^@]+@[^@]+\.[^@]+", x))
-            wizard.details["birth_date"]=self.input_validation('Enter your birth date in format (dd/MM/yy):\n',lambda x:len(x)>0 and len(x.split('/'))==3)
+            wizard.details["Name"]=self.input_validation('Enter your full name (minimum 2 characters each):\n',self.validation_functions["Name"])
+            wizard.details["Email"]=self.input_validation('Enter your email address:\n',self.validation_functions["Email"])
+            wizard.details["Birth Date"]=self.input_validation('Enter your birth date in format (dd/MM/yy):\n',self.validation_functions["Birth Date"])
         elif self.num_phase==2:
-            wizard.details["City"]=self.input_validation('Enter your city\n',lambda x:len(x)>0)
-            wizard.details["Street"]=self.input_validation('Enter your street\n',lambda x:len(x)>0)
-            wizard.details["Number"]=self.input_validation('Enter your number\n',lambda x: x !=0 and x>0)
-        else:
-            wizard.details["Social Media"]=self.input_validation('Enter your social media (facebook, twitter, Instagram or linkedin)\n',lambda x:re.compile(r'^(https?://)?(www\.)?(facebook|twitter|instagram|linkedin)\.com/.*$'))
+            wizard.details["City"]=self.input_validation('Enter your city\n',self.validation_functions["City"])
+            wizard.details["Street"]=self.input_validation('Enter your street\n',self.validation_functions["Street"])
+            wizard.details["Number"]=self.input_validation('Enter your number\n',self.validation_functions["Number"])
+        elif self.num_phase==3:
+            wizard.details["Social Media"]=self.input_validation('Enter your social media (facebook, twitter, Instagram or linkedin)\n',self.validation_functions["Social Media"])
             wizard.details["Hobbies"]=self.input_validation('Enter your hobbies (Chess, Movies, Sport, Cars, Dolls)\n')
+        else:
+            wizard.details["Happy"]=self.input_validation('Are you a happy person? Yes/No\n',self.validation_functions["Happy"])
+            wizard.details["Skydiving"]=self.input_validation(' Will you do skydiving? Yes/Maybe/No\n',self.validation_functions["Skydiving"])
+            wizard.details["One Dollar"]=self.input_validation('Do you have $1 in you pocket now? Yes/No\n',self.validation_functions["One Dollar"])
 
     def update(self,wizard):
         '''
@@ -63,6 +71,9 @@ class Phase:
 
         if self.num_phase==3:
             self.update_phase_field(wizard, choice, ["Social Media","Hobbies"])
+
+        if self.num_phase==4:
+            self.update_phase_field(wizard, choice, ["Happy","Skydiving","One Dollar"])
        
 
 
