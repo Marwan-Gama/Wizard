@@ -1,11 +1,9 @@
 from tkinter import ttk
 from tkinter.ttk import Progressbar
 from tkinter import *
-# from wizard import start_wizard
 import progress
-
 w=Tk()
-
+# img=PhotoImage(file="img//wizard.jpg")
 
 width_of_window = 427
 height_of_window = 250
@@ -14,7 +12,7 @@ screen_height = w.winfo_screenheight()
 x_coordinate = (screen_width/2)-(width_of_window/2)
 y_coordinate = (screen_height/2)-(height_of_window/2)
 w.geometry("%dx%d+%d+%d" %(width_of_window,height_of_window,x_coordinate,y_coordinate))
-
+w.overrideredirect(1)
 
 
 s = ttk.Style()
@@ -41,7 +39,7 @@ def new_win():
 #
 def bar():
 
-    l4=Label(w,text='Loading...',fg='white',bg="#249794")
+    l4=Label(w,text='Loading...',fg='white',bg="#A06FEC")
     lst4=('Calibri (Body)',10)
     l4.config(font=lst4)
     l4.place(x=18,y=210)
@@ -78,20 +76,20 @@ progress.place(x=-10,y=235)
 #     return "#%02x%02x%02x" % r
 # #Frame(w,width=432,height=241,bg=rgb((100,100,100))).
 # '''
-a='#249794'
-Frame(w,width=427,height=241,bg="#091DF6").place(x=0,y=0)  #249794
+a='#A06FEC'
+Frame(w,width=427,height=241,bg="#A06FEC").place(x=0,y=0)  #249794
 b1=Button(w,width=10,height=1,text='Get Started',command=bar,border=0,fg="black",bg='white')
 b1.place(x=170,y=200)
 #
 #
 # ######## Label
 
-l1=Label(w,text='Welcome To Wizard ',fg='black',bg='#091DF6')
+l1=Label(w,text='Welcome To Wizard ',fg='black',bg='#A06FEC')
 lst1=('Calibri (Body)',18,'bold')
 l1.config(font=lst1)
 l1.place(x=100,y=20)
 
-l2=Label(w,text='Registration',fg='black',bg='#091DF6')
+l2=Label(w,text='Registration',fg='black',bg='#A06FEC')
 lst2=('Calibri (Body)',18,'bold')
 l2.config(font=lst2)
 l2.place(x=140,y=60)
