@@ -9,7 +9,7 @@ class Phase:
         "Birth Date": lambda x: len(x) > 0 and len(x.split('/')) == 3,
         "City": lambda x: len(x) > 0,
         "Street": lambda x: len(x) > 0,
-        "Number": lambda x: int(x) != 0 and int(x) > 0,
+        "Number": lambda x: x.isnumeric() and int(x) != 0 and int(x) > 0,
         "Social Media": lambda x: re.compile(r'^(https?://)?(www\.)?(facebook|twitter|instagram|linkedin)\.com/.*$'),
         "Hobbies": lambda x: True,
         "Happy": lambda x: x=='Yes' or x=='No',  
@@ -62,7 +62,7 @@ class Phase:
 
         # Check the current phase and update the corresponding fields
         if self.num_phase==1:
-          self.update_phase_field(wizard, choice, ["Name","Email","birth_date"])
+          self.update_phase_field(wizard, choice, ["Name","Email","Birth Date"])
         if self.num_phase==2:
             self.update_phase_field(wizard, choice, ["City","Street","Number"])
         if self.num_phase==3:
