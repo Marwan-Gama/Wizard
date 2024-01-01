@@ -1,12 +1,14 @@
 #
-import SplashScreen
+import splash
 from wizard import Wizard
+from splash import splashscreen
 from phase import Phase
 
 def main():
-    SplashScreen
-    wizard = Wizard()
-    wizard.start_wizard()
+    continu=splash.splashscreen()
+    if continu==True:
+      wizard = Wizard()
+      wizard.start_wizard()
 
 if __name__ == "__main__":
     main()
