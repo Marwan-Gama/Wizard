@@ -6,7 +6,7 @@ class Wizard:
         self.details = {
             "Name": None,
             "Email": None,
-            "birth_date": None,
+            "Birth Date": None,
             "City": None,
             "Street": None,
             "Number": None,
@@ -28,8 +28,8 @@ class Wizard:
             display.show_phase(phase.num_phase, self.details)
         elif if_update.upper() == 'N':
             print("You chose not to update anything.")
-        else:
-            print("Invalid input. Please enter 'Y' for Yes or 'N' for No.")
+        # else:
+            # print("Invalid input. Please enter 'Y' for Yes or 'N' for No.")
 
 
     def create_phase(self,num_phase):
@@ -37,7 +37,7 @@ class Wizard:
         phase = Phase(num_phase)
         phase.run_phase(self)
         display.show_phase(phase.num_phase, self.details)
-        self.completed_phases.append(phase)
+        self.phases.append(phase)
         self.check_if_update(phase)
 
 
@@ -59,21 +59,21 @@ class Wizard:
                 if num_phase == 1:
                     print('You in Phase 1, You cant prev')
                     display.show_phase(num_phase , self.details)
-                    self.check_if_update(self.completed_phases[num_phase-1])
+                    self.check_if_update(self.phases[num_phase-1])
                 elif num_phase == 2:
                     num_phase -= 1
                     print('You in Phase 1')
                     display.show_phase(num_phase, self.details)
-                    self.check_if_update(self.completed_phases[num_phase-1])
+                    self.check_if_update(self.phases[num_phase-1])
                 elif num_phase == 3:
                     num_phase -= 1
                     print('You in Phase 2')
                     display.show_phase(num_phase , self.details)
-                    self.check_if_update(self.completed_phases[num_phase-1])
-                #elif num_phase == 4:
-                #   print('You in Phase 3')
-                #   display.show_phase(num_phase -1 , self.details)
-                #   self.check_if_update(self.completed_phases[num_phase-2])
+                    self.check_if_update(self.phases[num_phase-1])
+                elif num_phase == 4:
+                   print('You in Phase 3')
+                   display.show_phase(num_phase -1 , self.details)
+                   self.check_if_update(self.phases[num_phase-2])
             else:
                 print("Invalid choice. Please enter '1' to continue Next or '2' to Prev.")
 
@@ -89,10 +89,10 @@ class Wizard:
                     display.display_summary(self.details)
             elif choice == "2":
                 phase = int(input("Enter phase number: "))
-                if phase.num_phase in map (lambda item :item.num_phase ,self.completed_phases):
+                if phase.num_phase in map (lambda item :item.num_phase ,self.phases):
                     self.show_phase(phase.num_phase)
                 else:
-                    if phase.num_phase == self.completed_phases[len(self.completed_phases)-1]+1:
+                    if phase.num_phase == self.phases[len(self.phases)-1]+1:
                         self.run_phase(phase)
                     print("You can't access this phase yet. Please complete previous phases.")
             else:
