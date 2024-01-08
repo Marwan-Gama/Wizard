@@ -10,12 +10,6 @@ def display_summary(details):
     show_phase(3, details)
     show_phase(4, details)
 
-    rest_button=input(f"{Fore.YELLOW} \nenter 1 if you want to rest:")
-    if rest_button=="1":
-        rest_data(details)
-    else:
-        print("Invalid number")
-
 
 def show_phase(num_phase,details):
     phase_functions = {
